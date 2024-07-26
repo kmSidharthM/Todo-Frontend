@@ -1,0 +1,1 @@
+export const buildUrl = (path, project_id) => path.replace(":project_id", `${project_id}`);
