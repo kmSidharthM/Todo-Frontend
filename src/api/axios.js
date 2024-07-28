@@ -11,7 +11,7 @@ const setHttpHeaders = () => {
   };
 };
 
-export const initializeAxios = () => {
+export default function initializeAxios() {
   axios.defaults.baseURL = "http://localhost:8080/api/";
   setHttpHeaders();
   responseInterceptors();
