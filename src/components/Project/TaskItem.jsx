@@ -8,19 +8,19 @@ const TaskItem = ({ todo, deleteTodo, updateTodo}) => {
     todo_description, 
     status, 
     created_date, 
-    updated_date
+    // updated_date
    } = todo;
   return (
-    <div className='bg-neutral-800 font-poppins rounded-md flex items-center p-5 text-white space-x-4 relative'>
+    <div className='bg-neutral-800 font-poppins rounded-md flex items-center p-5 text-white space-x-4 relative lg:space-y-2'>
       <input type='checkbox' checked={!status} onChange={() => {
         updateTodo(todo_id, {...todo, status: !status})
       }}></input>
-      <div className='max-w-56'>
+      <div className='max-w-56 lg:text-xl lg:max-w-2xl'>
         <p className={!status ? 'line-through text-gray-400' : ''}>{todo_title}</p>
         <p className={!status ? 'line-through text-gray-400 text-sm' : 'text-sm'}>{todo_description}</p>
         <p className='text-xs text-gray-400'>{created_date}</p>
       </div>
-      <button className='absolute right-4 w-6 h-6 lg:w-9 lg:h-9' onClick={
+      <button className='absolute right-4 w-6 h-6 lg:w-8 lg:h-8' onClick={
         (e) => {
           e.preventDefault();
           deleteTodo(todo_id);

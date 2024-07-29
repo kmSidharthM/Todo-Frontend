@@ -57,9 +57,9 @@ const HomePage = () => {
   }
 
   return (
-    <div className='bg-black font-poppins h-screen overflow-auto p-2'>
+    <div className='bg-black font-poppins h-screen overflow-auto'>
       <Header title="Projects" />
-      <div className='flex justify-center relative'>
+      <div className='flex justify-center relative p-2'>
         <div className='flex flex-col space-y-2 w-80 lg:w-1/2'> 
           {
             projectList.map((project) => <ProjectItem {...project} deleteProject={deleteProject} key={project.project_id} />)

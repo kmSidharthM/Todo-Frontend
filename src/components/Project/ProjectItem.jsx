@@ -12,7 +12,7 @@ const ProjectItem = ({project_title, project_id, created_date, deleteProject}) =
           <p className='text-xs text-gray-400 lg:text-base'>{created_date}</p>
         </div>
         
-        <button className='absolute right-4 w-6 h-6 lg:w-9 lg:h-9' onClick={
+        <button className='absolute right-4 w-6 h-6 lg:w-8 lg:h-8' onClick={
           (e) => {
             e.preventDefault();
             deleteProject(project_id);
