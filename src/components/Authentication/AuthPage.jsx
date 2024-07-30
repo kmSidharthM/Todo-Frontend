@@ -1,13 +1,48 @@
 import { useState } from "react";
+import authApi from "../../api/auth";
+import { routes } from "../routes";
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { buildUrlProject } from "../Utils/buildUrl";
 
 const AuthPage = () => {
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [isNewUser, setIsNewUser] = useState(false);
   const [isError, setIsError] = useState(false);
+  const history = useHistory();
 
+  const authenticateUser = async (loginData) => {
+    try {
+      await authApi.authenticate(loginData);
+      history.push(buildUrlProject(routes.home.index, username));
+    }
+    catch(error) {
+      console.log(error);
+      console.log("Authentication failed")
+      setIsError(true);
+    }
+  }
+
+  const registerUser = async (loginData) => {
+    try {
+      authApi.register(loginData);
+      history.push(buildUrlProject(routes.home.index, username));
+    }
+    catch(error) {
+      console.log(error);
+    }
+  }
 
   const handleClick = () => {
+    const loginData = {
+      username,
+      password
+    };
+    if(isNewUser) {
+      registerUser(loginData);
+    } else {
+      authenticateUser(loginData);
+    }
   }
 
   return ( 

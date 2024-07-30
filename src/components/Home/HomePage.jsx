@@ -4,15 +4,17 @@ import ProjectItem from '../Project/ProjectItem';
 import AddNewProject from './AddNewProject';
 import { projectApi } from '../../api/project';
 import { ClipLoader } from 'react-spinners';
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 const HomePage = () => {
   const [projectList, setProjectList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { username } = useParams();
 
   const fetchProjects = async () => {
     try{
-      const response = await projectApi.fetch();
+      const response = await projectApi.fetch(username);
       setProjectList(response);
     } catch(error) {
       console.log(error);
@@ -34,7 +36,7 @@ const HomePage = () => {
 
   const addProject = async (project_details) => {
     try {
-      await projectApi.postProject(project_details);
+      await projectApi.postProject(username, project_details);
       fetchProjects();
       console.log('Project added!');
     }

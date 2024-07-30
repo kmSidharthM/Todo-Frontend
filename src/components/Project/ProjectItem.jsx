@@ -1,11 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom/cjs/react-router-dom.min'
+import { Link, useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import { routes } from '../routes'
-import { buildUrl } from '../Utils/buildUrl'
+import { buildUrlProject } from '../Utils/buildUrl'
 
 const ProjectItem = ({project_title, project_id, created_date, deleteProject}) => {
+  const { username } = useParams();
   return (
-    <Link to={buildUrl(routes.home.project, project_id )}>
+    <Link to={buildUrlProject(routes.home.project, username, project_id )}>
       <div className='bg-neutral-800 font-poppins rounded-md flex items-center p-5 text-white space-x-4 relative'>
         <div className='max-w-56 lg:text-xl'>
           <p>{project_title}</p>
