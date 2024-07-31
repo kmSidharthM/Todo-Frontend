@@ -1,10 +1,13 @@
-export const buildUrlProject = (path, username='', project_id='') => {
+export const buildUrlProject = (path, {username='', todo_id='', project_id=''}) => {
   let modifiedPath = path;
-  if (username) {
+  if (path.includes(":username")) {
     modifiedPath = modifiedPath.replace(/:username/g, username);
   }
-  if (project_id) {
+  if (path.includes(":project_id")) {
     modifiedPath = modifiedPath.replace(/:project_id/g, project_id);
+  }
+  if (path.includes(":todo_id")) {
+    modifiedPath = modifiedPath.replace(/:todo_id/g, todo_id);
   }
   return modifiedPath;
 }

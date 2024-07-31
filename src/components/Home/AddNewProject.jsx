@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import * as Dialog from '@radix-ui/react-dialog';
 import { getDate } from '../Utils/getDate';
 
-const AddNewProject = ({ item, isDescription, addItem }) => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+const AddNewProject = ({ item, isDescription, addItem, initialTitle='', initialDesc='' }) => {
+  const [title, setTitle] = useState(initialTitle);
+  const [description, setDescription] = useState(initialDesc);
 
   const handleSubmit = () => {
     const created_date = getDate();
@@ -43,12 +43,12 @@ const AddNewProject = ({ item, isDescription, addItem }) => {
             <Dialog.Title className='text-xl font-bold' >{item} Details</Dialog.Title>
             <Dialog.Description className='flex flex-col space-y-1 mb-4 mt-4 text-gray-700' >
                 <label htmlFor="projectName">Enter {item} Name</label>
-                <input type="text" placeholder='Enter a name..' className='p-2 rounded text-black border-2 border-black' onChange={(e) => setTitle(e.target.value)} />
+                <input value={title} type="text" placeholder='Enter a name..' className='p-2 rounded text-black border-2 border-black' onChange={(e) => setTitle(e.target.value)} />
                 {
                   isDescription ? (
                     <>
                       <label htmlFor="projectName">Enter {item} Description</label>
-                      <input type="text" placeholder='Enter description..' className='p-2 rounded text-black border-2 border-black' onChange={(e) => setDescription(e.target.value)} />
+                      <input value={description} type="text" placeholder='Enter description..' className='p-2 rounded text-black border-2 border-black' onChange={(e) => setDescription(e.target.value)} />
                     </>
                     
                   ) : (

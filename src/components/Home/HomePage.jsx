@@ -43,7 +43,6 @@ const HomePage = () => {
     catch(error) {
       console.log(error);
     }
-    
   }
 
   useEffect(() => {
@@ -57,6 +56,7 @@ const HomePage = () => {
       </div>
     )
   }
+
 
   return (
     <div className='bg-black font-poppins h-screen overflow-auto'>

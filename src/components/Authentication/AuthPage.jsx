@@ -14,7 +14,7 @@ const AuthPage = () => {
   const authenticateUser = async (loginData) => {
     try {
       await authApi.authenticate(loginData);
-      history.push(buildUrlProject(routes.home.index, username));
+      history.push(buildUrlProject(routes.home.index, { username }));
     }
     catch(error) {
       console.log(error);
@@ -26,7 +26,7 @@ const AuthPage = () => {
   const registerUser = async (loginData) => {
     try {
       authApi.register(loginData);
-      history.push(buildUrlProject(routes.home.index, username));
+      history.push(buildUrlProject(routes.home.index, { username }));
     }
     catch(error) {
       console.log(error);
